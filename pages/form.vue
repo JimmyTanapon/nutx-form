@@ -1,10 +1,13 @@
 <template>
   <div>
+    <p class="text-h4 text--primary light-blue pa-5">
+      สมัคร อะไรสักอย่าง
+    </p>
     <validation-observer ref="observer" v-slot="{ handleSubmit }">
-      <v-form @submit.prevent="handleSubmit(onSubmit)">
+      <v-form class="pa-5" @submit.prevent="handleSubmit(onSubmit)">
         <v-row>
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="houseNumber" rules="required">
+            <validation-provider v-slot="{ errors }" name="บ้านเลขที่" rules="required">
               <v-text-field
                 v-model="form.houseNumber"
                 label="บ้านเลขที่"
@@ -15,7 +18,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="village" rules="required">
+            <validation-provider v-slot="{ errors }" name="หมู่บ้าน/อาคาร" rules="required">
               <v-text-field
                 v-model="form.village"
                 label="หมู่บ้าน/อาคาร"
@@ -26,13 +29,13 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="villageNo" rules="required">
+            <validation-provider v-slot="{ errors }" name="หมู่ที่" rules="required">
               <v-text-field v-model="form.villageNo" label="หมู่ที่" placeholder="กรอก หมู่ที่" :error-messages="errors" />
             </validation-provider>
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="alley" rules="required">
+            <validation-provider v-slot="{ errors }" name="ตรอก/ซอย" rules="required">
               <v-text-field
                 v-model="form.alley"
                 label="ตรอก/ซอย"
@@ -43,7 +46,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="road" rules="required">
+            <validation-provider v-slot="{ errors }" name="ถนน" rules="required">
               <v-text-field
                 v-model="form.road"
                 label="ถนน"
@@ -54,7 +57,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="subDistrict" rules="required">
+            <validation-provider v-slot="{ errors }" name="ตำบล/แขวง" rules="required">
               <v-text-field
                 v-model="form.subDistrict"
                 label="ตำบล/แขวง"
@@ -65,7 +68,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="district" rules="required">
+            <validation-provider v-slot="{ errors }" name="อำเภอ/เขต" rules="required">
               <v-text-field
                 v-model="form.district"
                 label="อำเภอ/เขต"
@@ -76,7 +79,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="province" rules="required">
+            <validation-provider v-slot="{ errors }" name="จังหวัด" rules="required">
               <v-text-field
                 v-model="form.province"
                 label="จังหวัด"
@@ -87,7 +90,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="postalCode" rules="required|numeric">
+            <validation-provider v-slot="{ errors }" name="รหัสไปรษณีย์" rules="required|numeric|postalCodelength:4">
               <v-text-field
                 v-model="form.postalCode"
                 label="รหัสไปรษณีย์"
@@ -98,7 +101,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="postalCode" rules="required|numeric">
+            <validation-provider v-slot="{ errors }" name="โทรศัพท์บ้าน" rules="required|numeric|length:10">
               <v-text-field
                 v-model="form.homePhone"
                 label="โทรศัพท์บ้าน"
@@ -111,8 +114,8 @@
           <v-col md="4">
             <validation-provider
               v-slot="{ errors }"
-              name="mobilePhone"
-              rules="required|numeric"
+              name="โทรศัพท์มือถือ"
+              rules="required|numeric|length:10"
             >
               <v-text-field
                 v-model="form.mobilePhone"
@@ -124,7 +127,7 @@
           </v-col>
 
           <v-col md="4">
-            <validation-provider v-slot="{ errors }" name="email" rules="required">
+            <validation-provider v-slot="{ errors }" name="email" rules="required|email">
               <v-text-field
                 v-model="form.email"
                 label="อีเมล"
@@ -156,18 +159,18 @@ export default {
   data () {
     return {
       form: {
-        houseNumber: this.$store.state.address ? this.$store.state.address?.houseNumber : '',
-        village: this.$store.state.address ? this.$store.state.address?.village : '',
-        villageNo: this.$store.state.address ? this.$store.state.address?.villageNo : '',
-        alley: this.$store.state.address ? this.$store.state.address?.alley : '',
-        road: this.$store.state.address ? this.$store.state.address?.road : '',
-        subDistrict: this.$store.state.address ? this.$store.state.address?.subDistrict : '',
-        district: this.$store.state.address ? this.$store.state.address?.district : '',
-        province: this.$store.state.address ? this.$store.state.address?.province : '',
-        postalCode: this.$store.state.address ? this.$store.state.address?.postalCode : '',
-        homePhone: this.$store.state.address ? this.$store.state.address?.homePhone : '',
-        mobilePhone: this.$store.state.address ? this.$store.state.address?.mobilePhone : '',
-        email: this.$store.state.address ? this.$store.state.address?.email : ''
+        houseNumber: this.$store.state.address ? this.$store.state.address?.houseNumber : 'test',
+        village: this.$store.state.address ? this.$store.state.address?.village : 'test',
+        villageNo: this.$store.state.address ? this.$store.state.address?.villageNo : 'test',
+        alley: this.$store.state.address ? this.$store.state.address?.alley : 'test',
+        road: this.$store.state.address ? this.$store.state.address?.road : 'test',
+        subDistrict: this.$store.state.address ? this.$store.state.address?.subDistrict : 'test',
+        district: this.$store.state.address ? this.$store.state.address?.district : 'test',
+        province: this.$store.state.address ? this.$store.state.address?.province : 'test',
+        postalCode: this.$store.state.address ? this.$store.state.address?.postalCode : '1234',
+        homePhone: this.$store.state.address ? this.$store.state.address?.homePhone : '1213123123',
+        mobilePhone: this.$store.state.address ? this.$store.state.address?.mobilePhone : '1213123123',
+        email: this.$store.state.address ? this.$store.state.address?.email : 'test@t.com'
       }
 
       // form: {

@@ -4,16 +4,28 @@ import {
   ValidationProvider,
   extend
 } from 'vee-validate'
-import { required, numeric } from 'vee-validate/dist/rules'
+import { required, numeric, email, length } from 'vee-validate/dist/rules'
 
 extend('required', {
   ...required,
-  message: 'กรุณาระบุ'
+  message: 'กรุณาระบุ {_field_}'
 })
 
 extend('numeric', {
   ...numeric,
-  message: 'อายุต้องเป็นตัวเลขเท่านั้น'
+  message: '{_field_} ต้องเป็นตัวเลขเท่านั้น'
+})
+extend('email', {
+  ...email,
+  message: 'รูปเเบบ emailไม่ถูกต้อง'
+})
+extend('length', {
+  ...length,
+  message: '{_field_} ต้องไม่มากกว่าหรือน้อยกว่า 10'
+})
+extend('postalCodelength', {
+  ...length,
+  message: '{_field_} ต้องไม่มากกว่าหรือน้อยกว่า 4'
 })
 
 Vue.component('ValidationObserver', ValidationObserver)

@@ -1,65 +1,63 @@
+Copy code
 <template>
-  <div>
-    <v-row>
-      <v-col md="4">
-        บ้านเลขที่ : {{ form.houseNumber }}
-      </v-col>
-      <v-col md="4">
-        หมู่บ้าน : {{ form.village }}
-      </v-col>
-      <v-col md="4">
-        หมู่ที่ : {{ form.villageNo }}
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="4">
-        ตรอก/ซอย : {{ form.alley }}
-      </v-col>
-      <v-col md="4">
-        ถนน : {{ form.road }}
-      </v-col>
-      <v-col md="4">
-        ตำบล : {{ form.subDistrict }}
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="4">
-        อำเภอ : {{ form.district }}
-      </v-col>
-      <v-col md="4">
-        จังหวัด : {{ form.province }}
-      </v-col>
-      <v-col md="4">
-        รหัสไปรษณีย์ : {{ form.postalCode }}
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="6">
-        โทรศัพท์บ้าน : {{ form.homePhone }}
-      </v-col>
-      <v-col md="6">
-        โทรศัพท์มือถือ : {{ form.mobilePhone }}
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="12">
-        อีเมล : {{ form.email }}
-      </v-col>
-    </v-row>
+  <div class="pa-5 mx-auto" style="max-width: 70vw">
+    <v-card-title class="text-h5">
+      ข้อมูลที่อยู่
+    </v-card-title>
+    <v-divider />
+    <v-card-text style="max-width: 100%">
+      <v-row>
+        <v-col md="6">
+          <div>  <strong>บ้านเลขที่:</strong> {{ form.houseNumber }}</div>
+        </v-col>
+        <v-col md="6">
+          <strong>หมู่บ้าน:</strong> {{ form.village }}
+        </v-col>
+        <v-col md="6">
+          <strong>หมู่ที่:</strong> {{ form.villageNo }}
+        </v-col>
 
-    <v-btn
-      type="submit"
-      color="warning"
-      @click="onEdit"
-    >
-      Edit
-    </v-btn>
+        <v-col md="6">
+          <strong>ตรอก/ซอย:</strong> {{ form.alley }}
+        </v-col>
+        <v-col md="6">
+          <strong>ถนน:</strong> {{ form.road }}
+        </v-col>
+        <v-col md="6">
+          <strong>ตำบล:</strong> {{ form.subDistrict }}
+        </v-col>
+        <v-col md="6">
+          <strong>อำเภอ:</strong> {{ form.district }}
+        </v-col>
+
+        <v-col md="6">
+          <strong>จังหวัด:</strong> {{ form.province }}
+        </v-col>
+        <v-col md="6">
+          <strong>รหัสไปรษณีย์:</strong> {{ form.postalCode }}
+        </v-col>
+        <v-col md="6">
+          <strong>โทรศัพท์บ้าน:</strong> {{ form.homePhone }}
+        </v-col>
+        <v-col md="6">
+          <strong>โทรศัพท์มือถือ:</strong> {{ form.mobilePhone }}
+        </v-col>
+        <v-col md="6">
+          <strong>อีเมล:</strong> {{ form.email }}
+        </v-col>
+      </v-row>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn type="submit" color="warning" @click="onEdit">
+        Edit
+      </v-btn>
+    </v-card-actions>
   </div>
 </template>
 
 <script>
 export default {
-  // middleware: 'middlewareUser',
+  middleware: 'middlewareAdress',
   data () {
     return {
       form: {
